@@ -26,9 +26,10 @@ contract ERC20 is IERC20 {
 
     // Since all the tokens is stored to Owner's address, Implementing the functionality where users can purchase token for ETH.
 
-    function purchaseToken() public payable  returns (bool) {
+    function purchaseTokens() public payable  returns (bool) {
         // 1000 tokens for 1 Gwei
         require (msg.value>=1 gwei, "You must put value greater than 0.000000001 ETH or 1 Gwei");
+        require (address(msg.sender).balance>=msg.value, "You don't have enough funds in your account balance");
         uint ethToToken=msg.value *tokenPrice/1 gwei; // Tokens per gwei
          balanceOf[owner]-=ethToToken;
          balanceOf[msg.sender]+=ethToToken;
@@ -49,6 +50,7 @@ contract ERC20 is IERC20 {
 
 // Function to allow spender address to spend amount of token owner on his behalf.
     function approve(address spender, uint amount) external returns (bool) {
+
         allowance[msg.sender][spender] = amount;
         emit Approval(msg.sender, spender, amount);
         return true;
@@ -59,6 +61,7 @@ contract ERC20 is IERC20 {
         address receiver,
         uint amount
     ) external returns (bool) {
+        require(amount<= allowance[sender][msg.sender],"You have exceeded the amount to spend tokens allowed by token owner");
         allowance[sender][msg.sender] -= amount;
         balanceOf[sender] -= amount;
         balanceOf[receiver] += amount;
