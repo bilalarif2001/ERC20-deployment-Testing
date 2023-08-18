@@ -54,6 +54,7 @@ Now all the required files and dependencies are installed.
    ```
 
 2. **Run hardhat node**
+  
    Hardhat node is a local Ethereum blockchain network that will tracks all the transactions performed on the local node. This will be useful to deploy our contract to local node and keep track of ERC20 transactions performed via contract.
 
    This will expose the JSON RPC interface to hardhat. It will be avaible at url ```http://127.0.0.1:8545```
@@ -63,6 +64,7 @@ Now all the required files and dependencies are installed.
    npx hardhat node
    ```
 3. **Run deployment script**
+   
    Although, deployment script automatically compiles the contract and redeploy it to the network. When the contract is deployed, we can call contract functions from the network and interact with the contract.
 
    To deploy contract to local node, make sure your node is running. Open new terminal and type:
@@ -76,6 +78,7 @@ Now all the required files and dependencies are installed.
 Testing contract is optional to node since the contract is deployed everytime on each test case to make the changes over transactions and keep track of it during the testing. Contract is not deployed to local network and cannot be interacted externally.
 
  **Run Test**
+ 
 This automatically compiles the contract and run all the test cases defined in the test.js file located in test folder. To run test case, open new terminal
 ```bash
    npx hardhat test
