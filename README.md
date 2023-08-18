@@ -7,8 +7,9 @@ The deploy script deploys the contract to the local hardhat node. The hardhat no
 The Test script tests all the cases performed with ERC20 smart contract functions. This will include some additional functions and ERC20 standard functions such as:
 
 - Token details i.e symbol, name, total supply
-- transfer functions
-- events
+- Transfer functions
+- Approval functions
+- Contract events
 
 ### Prerequisites
 
